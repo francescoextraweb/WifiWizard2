@@ -2,15 +2,15 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-wifiwizard2"
-        version="3.1.2">
+        id="wifiwizard2"
+        version="3.3.0">
 
     <name>WifiWizard2</name>
     <description>Cordova Wifi Manager for Android and iOS</description>
     <license>Apache 2.0</license>
     <keywords>cordova,network,wifi,phonegap</keywords>
-    <repo>https://github.com/francescoextraweb/wifiwizard2.git</repo>
-    <issue>https://github.com/francescoextraweb/wifiwizard2/issues</issue>
+    <repo>https://github.com/tripflex/wifiwizard2.git</repo>
+    <issue>https://github.com/tripflex/wifiwizard2/issues</issue>
 
     <js-module src="www/WifiWizard2.js" name="WifiWizard2">
         <clobbers target="window.WifiWizard2" />
@@ -38,7 +38,7 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/wifiwizard2/WifiWizard2.java" target-dir="src/android/wifiwizard2" />
+        <source-file src="src/android/wifiwizard2/WifiWizard2.java" target-dir="src/wifiwizard2" />
     </platform>
 
     <platform name="ios">

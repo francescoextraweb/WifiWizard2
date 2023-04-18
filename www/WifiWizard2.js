@@ -175,13 +175,28 @@ var WifiWizard2 = {
    * @param {string|int} [SSID=all]
    * @returns {Promise<any>}
    */
-  disconnect: function (SSID) {
+  disconnect: function (SSID, algorithm) {
     return new Promise(function (resolve, reject) {
       if (SSID) {
-        cordova.exec(resolve, reject, 'WifiWizard2', 'disconnectNetwork', [WifiWizard2.formatWifiString(SSID)]);
+        cordova.exec(resolve, reject, 'WifiWizard2', 'disconnectNetwork', [WifiWizard2.formatWifiString(SSID), algorithm || ""]);
       } else {
         cordova.exec(resolve, reject, 'WifiWizard2', 'disconnect', []);
       }
+    });
+  },
+
+  /**
+   * unspecifierConnection (current if SSID not supplied)
+   *
+   * This method, if passed an SSID, will first disable the network, and then remove it from the device.  To only "disconnect" (ie disable in android),
+   * call WifiWizard2.disable() instead of disconnect.
+   *
+   * @param {string|int} [SSID=all]
+   * @returns {Promise<any>}
+   */
+  unspecifierConnection: function () {
+    return new Promise(function (resolve, reject) {
+      cordova.exec(resolve, reject, 'WifiWizard2', 'unspecifierConnection', [null, null]);
     });
   },
 
