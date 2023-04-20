@@ -1,5 +1,5 @@
 {
-  "_from": "git+https://github.com/matscav/WifiWizard2.git#dev",
+  "_from": "git+https://github.com/francescoextraweb/WifiWizard2.git#dev",
   "_id": "cordova-plugin-wifiwizard2@3.3.0",
   "_inBundle": false,
   "_integrity": "",
@@ -7,24 +7,24 @@
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "https://github.com/matscav/WifiWizard2#dev",
-    "rawSpec": "https://github.com/matscav/WifiWizard2#dev",
-    "saveSpec": "git+https://github.com/matscav/WifiWizard2.git#dev",
-    "fetchSpec": "https://github.com/matscav/WifiWizard2.git",
+    "raw": "https://github.com/francescoextraweb/WifiWizard2#dev",
+    "rawSpec": "https://github.com/francescoextraweb/WifiWizard2#dev",
+    "saveSpec": "git+https://github.com/francescoextraweb/WifiWizard2.git#dev",
+    "fetchSpec": "https://github.com/francescoextraweb/WifiWizard2.git",
     "gitCommittish": "dev"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/matscav/WifiWizard2.git#748500c32330b5c065797429654578953a7d04b9",
+  "_resolved": "git+https://github.com/francescoextraweb/WifiWizard2.git#748500c32330b5c065797429654578953a7d04b9",
   "_spec": "https://github.com/matscav/WifiWizard2#dev",
   "_where": "/workspace/smartlog",
   "author": {
     "name": "Myles McNamara"
   },
   "bugs": {
-    "url": "https://github.com/tripflex/wifiwizard2/issues"
+    "url": "https://github.com/francescoextraweb/wifiwizard2/issues"
   },
   "bundleDependencies": false,
   "cordova": {
@@ -48,7 +48,7 @@
       }
     }
   },
-  "homepage": "https://github.com/tripflex/wifiwizard2#readme",
+  "homepage": "https://github.com/francescoextraweb/wifiwizard2#readme",
   "keywords": [
     "ecosystem:cordova",
     "cordova-android",
@@ -58,7 +58,7 @@
   "name": "cordova-plugin-wifiwizard2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tripflex/wifiwizard2.git"
+    "url": "git+https://github.com/francescoextraweb/wifiwizard2.git"
   },
   "version": "3.3.0"
 }
