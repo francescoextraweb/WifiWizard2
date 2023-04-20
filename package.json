@@ -17,7 +17,7 @@
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/francescoextraweb/WifiWizard2.git#748500c32330b5c065797429654578953a7d04b9",
+  "_resolved": "git+https://github.com/francescoextraweb/WifiWizard2.git",
   "_spec": "https://github.com/matscav/WifiWizard2",
   "_where": "/workspace/smartlog",
   "author": {
@@ -48,7 +48,7 @@
       }
     }
   },
-  "homepage": "https://github.com/francescoextraweb/wifiwizard2#readme",
+  "homepage": "https://github.com/francescoextraweb/WifiWizard2#readme",
   "keywords": [
     "ecosystem:cordova",
     "cordova-android",
@@ -58,7 +58,7 @@
   "name": "cordova-plugin-wifiwizard2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/francescoextraweb/wifiwizard2.git"
+    "url": "git+https://github.com/francescoextraweb/WifiWizard2.git"
   },
   "version": "3.3.0"
 }
