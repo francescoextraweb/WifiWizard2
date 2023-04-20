@@ -1,5 +1,5 @@
 {
-  "_from": "git+https://github.com/francescoextraweb/WifiWizard2.git#dev",
+  "_from": "git+https://github.com/francescoextraweb/WifiWizard2.git",
   "_id": "cordova-plugin-wifiwizard2@3.3.0",
   "_inBundle": false,
   "_integrity": "",
@@ -7,9 +7,9 @@
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "https://github.com/francescoextraweb/WifiWizard2#dev",
-    "rawSpec": "https://github.com/francescoextraweb/WifiWizard2#dev",
-    "saveSpec": "git+https://github.com/francescoextraweb/WifiWizard2.git#dev",
+    "raw": "https://github.com/francescoextraweb/WifiWizard2",
+    "rawSpec": "https://github.com/francescoextraweb/WifiWizard2",
+    "saveSpec": "git+https://github.com/francescoextraweb/WifiWizard2.git",
     "fetchSpec": "https://github.com/francescoextraweb/WifiWizard2.git",
     "gitCommittish": "dev"
   },
@@ -18,7 +18,7 @@
     "/"
   ],
   "_resolved": "git+https://github.com/francescoextraweb/WifiWizard2.git#748500c32330b5c065797429654578953a7d04b9",
-  "_spec": "https://github.com/matscav/WifiWizard2#dev",
+  "_spec": "https://github.com/matscav/WifiWizard2",
   "_where": "/workspace/smartlog",
   "author": {
     "name": "Myles McNamara"
