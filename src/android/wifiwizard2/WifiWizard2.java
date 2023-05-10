@@ -133,6 +133,8 @@ public class WifiWizard2 extends CordovaPlugin {
     private final BroadcastReceiver networkChangedReceiver = new NetworkChangedReceiver();
     private static final IntentFilter NETWORK_STATE_CHANGED_FILTER = new IntentFilter();
 
+    public static Network specifiedNetwork;
+
     static {
         NETWORK_STATE_CHANGED_FILTER.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
     }
@@ -2057,7 +2059,6 @@ public class WifiWizard2 extends CordovaPlugin {
 
         // Marshmallow OS or newer
         if (API_VERSION >= 23) {
-
             Log.d(TAG, "BindALL onSuccessfulConnection API >= 23");
 
             // Marshmallow (API 23+) or newer uses bindProcessToNetwork
@@ -2083,7 +2084,6 @@ public class WifiWizard2 extends CordovaPlugin {
             // Only lollipop (API 21 && 22) use setProcessDefaultNetwork, API < 21 already
             // does this by default
         } else if (API_VERSION >= 21 && API_VERSION < 23) {
-
             Log.d(TAG, "BindALL onSuccessfulConnection API >= 21 && < 23");
 
             // Lollipop (API 21-22) use setProcessDefaultNetwork (deprecated in API 23 -
@@ -2102,7 +2102,6 @@ public class WifiWizard2 extends CordovaPlugin {
 
             connectivityManager.requestNetwork(request, networkCallback);
             prevNetworkCallback = networkCallback;
-
         } else {
             // Technically we should never reach this with older API, but just in case
             Log.d(TAG, "BindALL onSuccessfulConnection API older than 21, no need to do any binding");
@@ -2110,7 +2109,6 @@ public class WifiWizard2 extends CordovaPlugin {
             prevNetworkCallback = null;
             previous = null;
             desired = null;
-
         }
     }
 
@@ -2200,27 +2198,33 @@ public class WifiWizard2 extends CordovaPlugin {
                 NetworkRequest networkRequest = networkRequestBuilder1.build();
                 ConnectivityManager cm = (ConnectivityManager) cordova.getActivity()
                         .getSystemService(Context.CONNECTIVITY_SERVICE);
+
                 ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
                     @Override
                     public void onAvailable(Network network) {
                         super.onAvailable(network);
                         Log.d(TAG, "WifiWizard2: 211 onAvailable:" + network);
-                        callbackContext.success();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             cm.bindProcessToNetwork(network);
                         }
+
+                        specifiedNetwork = network;
+
+                        callbackContext.success();
                     }
 
                     @Override
                     public void onUnavailable() {
                         super.onUnavailable();
+                        specifiedNetwork = null;
                         Log.d(TAG, "WifiWizard2: 211 onUnavailable");
                         callbackContext.error("SPECIFIER_NETWORK_UNAVAILABLE");
                     }
                 };
+                
                 cm.requestNetwork(networkRequest, networkCallback);
                 prevNetworkCallback = networkCallback;
-
+                
             } catch (Exception e) {
                 callbackContext.error(e.getMessage());
                 Log.d(TAG, e.getMessage());
@@ -2269,6 +2273,7 @@ public class WifiWizard2 extends CordovaPlugin {
             WifiNetworkSuggestion.Builder builder = new WifiNetworkSuggestion.Builder();
             builder.setSsid(SSID);
             builder.setIsAppInteractionRequired(false);
+            // builder.setCredentialSharedWithUser(true);
 
             if (Algorithm.matches("/WEP|WPA|WPA2/gim") && PASS.length() > 0) {
                 builder.setWpa2Passphrase(PASS);
@@ -2305,4 +2310,5 @@ public class WifiWizard2 extends CordovaPlugin {
         }
 
     }
+
 }
