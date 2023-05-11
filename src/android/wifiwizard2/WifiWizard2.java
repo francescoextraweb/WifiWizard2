@@ -2236,6 +2236,7 @@ public class WifiWizard2 extends CordovaPlugin {
     }
 
     private boolean unspecifierConnection(CallbackContext callbackContext, JSONArray data) {
+        specifiedNetwork = null;
         return this.disconnectNetwork(callbackContext, data);
     }
 
