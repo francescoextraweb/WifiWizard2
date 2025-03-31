@@ -134,6 +134,7 @@ public class WifiWizard2 extends CordovaPlugin {
     private static final IntentFilter NETWORK_STATE_CHANGED_FILTER = new IntentFilter();
 
     public static Network specifiedNetwork;
+    public static WifiManager.MulticastLock mLock;
 
     static {
         NETWORK_STATE_CHANGED_FILTER.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
@@ -2204,7 +2205,8 @@ public class WifiWizard2 extends CordovaPlugin {
                     public void onAvailable(Network network) {
                         super.onAvailable(network);
                         Log.d(TAG, "WifiWizard2: 211 onAvailable:" + network);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT >= 34 ) { // esclude da Android 14 in poi
                             cm.bindProcessToNetwork(network);
                         }
 
@@ -2236,7 +2238,6 @@ public class WifiWizard2 extends CordovaPlugin {
     }
 
     private boolean unspecifierConnection(CallbackContext callbackContext, JSONArray data) {
-        specifiedNetwork = null;
         return this.disconnectNetwork(callbackContext, data);
     }
 
@@ -2274,7 +2275,6 @@ public class WifiWizard2 extends CordovaPlugin {
             WifiNetworkSuggestion.Builder builder = new WifiNetworkSuggestion.Builder();
             builder.setSsid(SSID);
             builder.setIsAppInteractionRequired(false);
-            // builder.setCredentialSharedWithUser(true);
 
             if (Algorithm.matches("/WEP|WPA|WPA2/gim") && PASS.length() > 0) {
                 builder.setWpa2Passphrase(PASS);
